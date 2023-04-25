@@ -235,8 +235,15 @@ public final class InputOverlay extends SurfaceView implements OnTouchListener
           if (button.getBounds()
                   .contains((int) event.getX(pointerIndex), (int) event.getY(pointerIndex)))
           {
+
+            //Also seems important
+
             button.setPressedState(true);
             button.setTrackId(event.getPointerId(pointerIndex));
+
+            //Add an if statement that will toggle the button if it's setting is applied
+            //Press it otherwise
+
             pressed = true;
             InputOverrider.setControlState(mControllerIndex, button.getControl(), 1.0);
 
@@ -250,6 +257,10 @@ public final class InputOverlay extends SurfaceView implements OnTouchListener
           // If a pointer ends, release the button it was pressing.
           if (button.getTrackId() == event.getPointerId(pointerIndex))
           {
+
+            //Maybe just make is so that it doesn't release?? idkrk
+            //I feel like that could cause some errors, but it may work
+
             button.setPressedState(false);
             InputOverrider.setControlState(mControllerIndex, button.getControl(), 0.0);
 
